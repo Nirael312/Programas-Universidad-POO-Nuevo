@@ -24,6 +24,14 @@ public class Persona {
         }
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
+    public boolean getTrabaja() {
+        return trabaja;
+    }
+
     public void muestro() {
         System.out.println("nombre: " + nombre + ", edad: " + edad + ", ocupacion: " + ocupacion);
     }
