@@ -27,12 +27,12 @@ public class Comuna {
     public void muestro_informe() {
         int val = 0;
         int edad_final = 0;
-        double promedio;
+        float promedio;
         int personas_trabajando = 0;
         int cant_familias = 0;
 
         for (Familia fam_aux: comuna) {
-        val = val + fam_aux.cantidad_personas();
+        val += fam_aux.cantidad_personas();
         edad_final += fam_aux.edad_total();
         personas_trabajando += fam_aux.canti_trabajando();
         cant_familias ++;
