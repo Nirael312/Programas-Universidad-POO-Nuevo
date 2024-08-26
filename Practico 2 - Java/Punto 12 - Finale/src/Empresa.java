@@ -29,8 +29,11 @@ public class Empresa {
     public void muestroEmpleados() {
         int nro = 1;
         System.out.println(" ");
+        System.out.println("Empresa: " + nombre_empresa);
+        System.out.println("Direccion: " + direccion);
+        System.out.println(" ");
 
-        System.out.println("  -------- Empleados de la empresa: " + nombre_empresa + "  --------");
+        System.out.println("  -------- Empleados de la empresa --------");
         System.out.println(" ");
         for (Persona empleado_aux: empleados) {
             System.out.println("Empleado nro: " + nro);
@@ -38,6 +41,9 @@ public class Empresa {
             System.out.println(" ");
             nro++;
         }
+
+        System.out.println("  ------ Fin Empleados de la empresa ------");
+        System.out.println(" ");
     }
 
 }
