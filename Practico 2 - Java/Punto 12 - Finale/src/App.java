@@ -6,7 +6,7 @@ public class App {
         
         Puesto puesto1 = new Puesto("Administrativo");
         Puesto puesto2 = new Puesto("Gerente");
-        Puesto puesto3 = new Puesto("Tesorero"); // el pepe
+        Puesto puesto3 = new Puesto("Tesorero"); 
 
         Persona empleado1 = new Persona("Ariel Zerna Rodriguez", 24, 'M', true, true, puesto1.getNombre_puesto());
         Persona empleado2 = new Persona("Kadir", 23, 'M', true, true, puesto1.getNombre_puesto());
