@@ -18,7 +18,8 @@ public class App {
         empresa.agregarEmpleado(empleado2);
         empresa.agregarEmpleado(empleado3);
         empresa.agregarEmpleado(empleado4);
-        empresa.agregarEmpleado(empleado5);
+        empresa.agregarEmpleado(empleado5); 
+        System.out.println("when como cuando pov el c pepe en el skibidi pomni sigma omg lol");
 
         empresa.muestroEmpleados();
 
