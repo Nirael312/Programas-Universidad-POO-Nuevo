@@ -18,6 +18,17 @@ public class Jugador {
         plantel_cartas.add(carta);
     }
 
+    public void muestro_cartas() {
+
+        System.out.println(" ");
+        System.out.println("  - - -  Cartas del jugador: " + nombre_jugador + "  - - -  ");
+        System.out.println();
+        
+        for (Carta carta: plantel_cartas) {
+            carta.imprimo_carta();
+        }
+    }
+
     
 
 }

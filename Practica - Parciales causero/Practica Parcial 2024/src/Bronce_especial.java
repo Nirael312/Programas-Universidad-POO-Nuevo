@@ -1,3 +1,6 @@
+
+import java.util.Random;
+
 public class Bronce_especial extends Carta {
     private String habilidad_especial;
 
@@ -11,7 +14,16 @@ public class Bronce_especial extends Carta {
         System.out.println("Habilidad especial: " + habilidad_especial);
     }
 
-    public void genero_stats() {
+    public void genero_stats() { // version obsoleta, la dejo para que quede constancia de la diferencia con la version nueva(en los demas se ve)
+
+        Random mi_Random = new Random();
+
+        this.defensa = genero_valores(49, 65, mi_Random)+2;
+        this.fisico = genero_valores(49, 65, mi_Random)+2;
+        this.pase = genero_valores(49, 65, mi_Random)+2;
+        this.regate = genero_valores(49, 65, mi_Random)+2;
+        this.tiro = genero_valores(49, 65, mi_Random)+2;
+        this.velocidad = genero_valores(49, 65, mi_Random)+2;
         
     }
 

@@ -1,0 +1,20 @@
+public class App {
+    public static void main(String[] args) throws Exception {
+        Bronce_especial carta_prueba = new Bronce_especial("Mago oscuro", "boca xd", "Japon", "cumeada oscura");
+        System.out.println("Hello, World!");
+
+        Especial wea_especial = new Especial("Nokotan", "Japan desu ne", "Nihon");
+        wea_especial.agregarHabilidad("rayo laser 4000");
+        wea_especial.agregarHabilidad("pum te pego");
+
+        wea_especial.genero_stats();
+        wea_especial.imprimo_carta();
+
+
+        carta_prueba.genero_stats();
+
+        carta_prueba.imprimo_carta();
+    }
+}
+
+// esta wea es el mod -->  %     ,  4 % 2 = 0, si, el resto es cero, es par.
