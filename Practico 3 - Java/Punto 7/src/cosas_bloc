@@ -1,0 +1,41 @@
+La sobrecarga de métodos y la sobrecarga de parámetros son conceptos relacionados en programación orientada a objetos (OOP) que permiten definir múltiples versiones de un mismo método con diferentes firmas o listas de parámetros. Esto proporciona flexibilidad y mejora la legibilidad del código al permitir usar un mismo nombre de método para distintas operaciones.
+
+Sobrecarga de métodos (Method Overloading)
+La sobrecarga de métodos ocurre cuando se definen varios métodos con el mismo nombre dentro de una clase, pero con diferentes listas de parámetros (número, tipo o el orden de los parámetros). El compilador puede diferenciar entre estos métodos en función de los argumentos que se pasen cuando el método es llamado.
+
+Ejemplo en Java:
+
+class Calculadora {
+
+    // Método para sumar dos enteros
+    public int sumar(int a, int b) {
+        return a + b;
+    }
+
+    // Método sobrecargado para sumar tres enteros
+    public int sumar(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Método sobrecargado para sumar dos números flotantes
+    public double sumar(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculadora calc = new Calculadora();
+        System.out.println(calc.sumar(2, 3)); // Llama al método con dos enteros
+        System.out.println(calc.sumar(2, 3, 4)); // Llama al método con tres enteros
+        System.out.println(calc.sumar(2.5, 3.5)); // Llama al método con dos doubles
+    }
+}
+
+La sobrecarga de parámetros es una parte de la sobrecarga de métodos y ocurre cuando se utilizan diferentes combinaciones de parámetros (tipos o cantidad) en los métodos sobrecargados. Es una técnica que permite que un mismo método se comporte de manera diferente según los parámetros que recibe.
+
+En el ejemplo anterior, la sobrecarga de parámetros se ve en el hecho de que:
+
+El primer método recibe dos parámetros de tipo int.
+El segundo método recibe tres parámetros de tipo int.
+El tercer método recibe dos parámetros de tipo double

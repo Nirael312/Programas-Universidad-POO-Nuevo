@@ -2,7 +2,7 @@
 
 import java.util.Random;
 
-public class Carta {
+public abstract class Carta {
 
     protected String nombre, pais, equipo;
     protected int velocidad, tiro, regate, defensa, pase, fisico;
@@ -29,4 +29,5 @@ public class Carta {
         System.out.println("Velocidad: " + velocidad + ",  Pase: " + pase);
     }
 
+    public abstract int devuelvo_quimica(String pais_favorito, String equipo_favorito);
 }

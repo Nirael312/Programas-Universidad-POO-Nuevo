@@ -24,9 +24,14 @@ public class Jugador {
         System.out.println("  - - -  Cartas del jugador: " + nombre_jugador + "  - - -  ");
         System.out.println();
         
+        int quimica = 0;
+
         for (Carta carta: plantel_cartas) {
             carta.imprimo_carta();
+            quimica += carta.devuelvo_quimica(pais_favorito, equipo_favorito);
         }
+
+        System.out.println("Con una quimica de: " + quimica);
     }
 
     

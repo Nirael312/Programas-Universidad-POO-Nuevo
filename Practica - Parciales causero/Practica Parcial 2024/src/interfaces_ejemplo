@@ -1,0 +1,31 @@
+Una interfaz puede contener métodos abstractos (sin implementación) y métodos predeterminados (con implementación). 
+No puede contener campos (excepto constantes) ni constructores.
+
+public interface Vehiculo {
+    void acelerar();
+    void frenar();
+}
+
+public interface Vehiculo {
+    void acelerar();
+    void frenar();
+
+    default void encender() {
+        System.out.println("El vehículo está encendido");
+    }
+}
+
+public class Coche implements Vehiculo {
+    @Override
+    public void acelerar() {
+        System.out.println("El coche está acelerando");
+    }
+
+    @Override
+    public void frenar() {
+        System.out.println("El coche está frenando");
+    }
+}
+
+En resumen, la herencia en Java me permite reutilizar y extender la funcionalidad de una clase base, 
+mientras que las interfaces me permiten definir un conjunto de métodos que deben ser implementados por cualquier clase que quiera cumplir con ese contrato, sin preocuparte por los detalles de la implementación

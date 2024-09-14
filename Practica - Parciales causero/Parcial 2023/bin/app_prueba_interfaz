@@ -1,0 +1,178 @@
+import java.util.Random;
+
+// Interfaz Pagar
+interface Pagar {
+    void pagar(double monto, boolean esDebito, int cuotas);
+}
+
+// Clase CuentaBancaria
+class CuentaBancaria implements Pagar {
+    private double saldo;
+    private String dueño;
+    private String nroCuenta;
+    private String cbu;
+
+    public CuentaBancaria(double saldo, String dueño, String nroCuenta, String cbu) {
+        this.saldo = saldo;
+        this.dueño = dueño;
+        this.nroCuenta = nroCuenta;
+        this.cbu = cbu;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    @Override
+    public void pagar(double monto, boolean esDebito, int cuotas) {
+        double montoConInteres = monto;
+        if (esDebito) {
+            montoConInteres = monto * 0.9; // Reintegro del 10%
+        } else {
+            if (cuotas > 3) {
+                montoConInteres += monto * (0.02 * cuotas); // Interés por cantidad de cuotas
+            }
+        }
+
+        if (cuotas > 1) {
+            saldo -= montoConInteres / cuotas; // Solo se descuenta la primera cuota
+        } else {
+            saldo -= montoConInteres;
+        }
+        System.out.println("Pago realizado con Cuenta Bancaria: Monto=" + monto + ", Es Débito=" + esDebito + ", Cuotas=" + cuotas + ", Saldo restante=" + saldo);
+    }
+}
+
+// Clase BilleteraVirtual
+class BilleteraVirtual implements Pagar {
+    private double saldo;
+    private String dueño;
+    private String nroCuenta;
+    private String cvu;
+
+    public BilleteraVirtual(double saldo, String dueño, String nroCuenta, String cvu) {
+        this.saldo = saldo;
+        this.dueño = dueño;
+        this.nroCuenta = nroCuenta;
+        this.cvu = cvu;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    @Override
+    public void pagar(double monto, boolean esDebito, int cuotas) {
+        double montoConInteres = monto;
+        if (!esDebito) { // Solo para crédito en billetera virtual
+            montoConInteres += monto * (0.08 * cuotas); // Interés por cantidad de cuotas
+        }
+
+        if (cuotas > 1) {
+            saldo -= montoConInteres / cuotas; // Solo se descuenta la primera cuota
+        } else {
+            saldo -= montoConInteres;
+        }
+        System.out.println("Pago realizado con Billetera Virtual: Monto=" + monto + ", Es Débito=" + esDebito + ", Cuotas=" + cuotas + ", Saldo restante=" + saldo);
+    }
+}
+
+// Clase Impuesto
+class Impuesto {
+    private String nombre;
+    private double monto;
+    private int periodo;
+    private boolean cobrado;
+    private String comprobante;
+
+    public Impuesto(String nombre, double monto, int periodo) {
+        this.nombre = nombre;
+        this.monto = monto;
+        this.periodo = periodo;
+        this.cobrado = false;
+    }
+
+    public void pagar(double monto, String comprobante) {
+        if (this.monto == monto) {
+            this.comprobante = comprobante;
+            this.cobrado = true;
+            System.out.println("Impuesto pagado: Nombre=" + nombre + ", Monto=" + monto + ", Comprobante=" + comprobante);
+        } else {
+            System.out.println("Monto incorrecto para el impuesto: Nombre=" + nombre + ", Monto=" + monto);
+        }
+    }
+}
+
+// Clase Principal
+public class Main {
+    public static void main(String[] args) {
+        Random rnd = new Random();
+
+        // Crear cuentas
+        CuentaBancaria cuentaBancaria = new CuentaBancaria(1000, "Juan", "123456", "CBU123");
+        BilleteraVirtual billeteraVirtual = new BilleteraVirtual(500, "Ana", "654321", "CVU123");
+
+        // Crear impuestos
+        Impuesto impuesto1 = new Impuesto("Impuesto A", 100, 202309);
+        Impuesto impuesto2 = new Impuesto("Impuesto B", 150, 202309);
+
+        // Simular pagos con una cuenta bancaria
+        for (int i = 0; i < 5; i++) {
+            double monto = rnd.nextDouble() * 200; // Monto aleatorio entre 0 y 200
+            boolean esDebito = rnd.nextBoolean(); // Determina aleatoriamente si es débito
+            int cuotas = rnd.nextInt(12) + 1; // Número de cuotas aleatorio entre 1 y 12
+            System.out.println("Pagando con cuenta bancaria: Monto=" + monto + ", Es Débito=" + esDebito + ", Cuotas=" + cuotas);
+            cuentaBancaria.pagar(monto, esDebito, cuotas);
+        }
+
+        // Simular pagos con una billetera virtual
+        for (int i = 0; i < 5; i++) {
+            double monto = rnd.nextDouble() * 200; // Monto aleatorio entre 0 y 200
+            boolean esDebito = rnd.nextBoolean(); // Determina aleatoriamente si es débito
+            int cuotas = rnd.nextInt(12) + 1; // Número de cuotas aleatorio entre 1 y 12
+            System.out.println("Pagando con billetera virtual: Monto=" + monto + ", Es Débito=" + esDebito + ", Cuotas=" + cuotas);
+            billeteraVirtual.pagar(monto, esDebito, cuotas);
+        }
+
+        // Realizar pagos de impuestos
+        impuesto1.pagar(100, "12345");
+        impuesto2.pagar(150, "67890");
+
+        // Imprimir resultados
+        System.out.println("Saldo cuenta bancaria: " + cuentaBancaria.getSaldo());
+        System.out.println("Saldo billetera virtual: " + billeteraVirtual.getSaldo());
+    }
+}
+
+
++------------------+
+|    Pagable       |
++------------------+
+| + pagar(monto,   |
+|   esDebito,      |
+|   cuotas)        |
++------------------+
+        ^
+        |
++------------------+       +---------------------+
+| CuentaBancaria   |       | BilleteraVirtual    |
++------------------+       +---------------------+
+| - saldo          |       | - saldo             |
+| - dueño          |       | - dueño             |
+| - nroCuenta      |       | - nroCuenta         |
+| - cbu            |       | - cvu               |
++------------------+       +---------------------+
+| + pagar(...)     |       | + pagar(...)        |
++------------------+       +---------------------+
+        ^                           ^
+        |                           |
++---------------------+     +---------------------+
+|     Impuesto        |     |      Main           |
++---------------------+     +---------------------+
+| - nombre            |
+| - monto             |
+| - periodo           |
+| - estadoCobrado     |
++---------------------+
+| + pagar(...)        |
++---------------------+

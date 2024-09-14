@@ -34,7 +34,7 @@ public class Especial extends Carta {
         Random mi_Random = new Random();
         int val = super.genero_valores(89, 99, mi_Random);
         int val_acumulado = (int) (val * 0.02) * val;
-        if (val_acumulado >= 99) {
+        if (val_acumulado <= 99) {
             return val_acumulado;
         } else {
             return val;
@@ -50,7 +50,7 @@ public class Especial extends Carta {
         this.velocidad = genero_valores();
     }
 
-    public int devuelvo_quimica() {
+    public int devuelvo_quimica(String pais_favorito, String equipo_favorito) {
         int quimica = 100;
         return quimica;
     }

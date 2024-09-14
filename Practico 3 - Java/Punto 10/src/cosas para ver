@@ -1,0 +1,145 @@
+
+import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+
+public class cosa {
+
+// Clase base Persona
+abstract class Persona {
+    String nombre;
+    int horasTrabajadas;
+    
+    public Persona(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public abstract void generarHorasTrabajadas();
+}
+
+// Clase Docente que extiende Persona
+class Docente extends Persona {
+    String categoria;
+    Random random = new Random();
+    
+    public Docente(String nombre) {
+        super(nombre);
+        this.categoria = asignarCategoria();
+    }
+    
+    // Asignar una categoría aleatoria
+    private String asignarCategoria() {
+        String[] categorias = {"simple", "semiexclusiva", "exclusiva"};
+        return categorias[random.nextInt(categorias.length)];
+    }
+    
+    // Generar horas trabajadas con probabilidades según la categoría
+    @Override
+    public void generarHorasTrabajadas() {
+        int horasRequeridas = 40; // Suponiendo 40 horas requeridas en el mes
+        
+        switch (categoria) {
+            case "simple":
+                if (random.nextDouble() < 0.95) {
+                    horasTrabajadas = horasRequeridas + random.nextInt(10);  // 95% de probabilidad de exceder
+                } else {
+                    horasTrabajadas = horasRequeridas;
+                }
+                break;
+        
+            case "semiexclusiva":
+                if (random.nextDouble() < 0.75) {
+                    horasTrabajadas = horasRequeridas + random.nextInt(10);  // 75% de probabilidad de exceder
+                } else {
+                    horasTrabajadas = horasRequeridas;
+                }
+                break;
+        
+            case "exclusiva":
+                if (random.nextDouble() < 0.60) {
+                    horasTrabajadas = horasRequeridas + random.nextInt(10);  // 60% de probabilidad de exceder
+                } else {
+                    horasTrabajadas = horasRequeridas;
+                }
+                break;
+        
+            default:  // Para los no docentes
+                if (random.nextDouble() < 0.80) {
+                    horasTrabajadas = horasRequeridas + random.nextInt(10);  // 80% de probabilidad de exceder
+                } else {
+                    horasTrabajadas = horasRequeridas;
+                }
+                break;
+        }
+        }
+    }
+}
+
+// Clase NoDocente que extiende Persona
+class NoDocente extends Persona {
+    String jornada;
+    Random random = new Random();
+    
+    public NoDocente(String nombre) {
+        super(nombre);
+        this.jornada = asignarJornada();
+    }
+    
+    // Asignar una jornada aleatoria
+    private String asignarJornada() {
+        String[] jornadas = {"completa", "parcial"};
+        return jornadas[random.nextInt(jornadas.length)];
+    }
+    
+    // Generar horas trabajadas con probabilidades para no docentes
+    @Override
+    public void generarHorasTrabajadas() {
+        int horasRequeridas = 40; // Suponiendo 40 horas requeridas en el mes
+        horasTrabajadas = (random.nextDouble() < 0.80) ? horasRequeridas + random.nextInt(10) : horasRequeridas;
+    }
+}
+
+// Clase Reloj para generar informes
+class Reloj {
+    public void imprimirInforme(List<Persona> personas) {
+        for (Persona persona : personas) {
+            System.out.println("Nombre: " + persona.nombre);
+            System.out.println("Horas trabajadas: " + persona.horasTrabajadas);
+            if (persona instanceof Docente) {
+                System.out.println("Categoría: " + ((Docente) persona).categoria);
+            } else if (persona instanceof NoDocente) {
+                System.out.println("Jornada: " + ((NoDocente) persona).jornada);
+            }
+            System.out.println("----------------------------");
+        }
+    }
+}
+
+// Clase principal para realizar la simulación
+public class Simulacion {
+    public static void main(String[] args) {
+        Random random = new Random();
+        List<Persona> personas = new ArrayList<>();
+        
+        // Crear al menos 10 personas (docentes y no docentes)
+        for (int i = 0; i < 10; i++) {
+            if (random.nextBoolean()) {
+                personas.add(new Docente("Docente " + (i + 1)));
+            } else {
+                personas.add(new NoDocente("NoDocente " + (i + 1)));
+            }
+        }
+        
+        // Generar horas trabajadas para cada persona
+        for (Persona persona : personas) {
+            persona.generarHorasTrabajadas();
+        }
+        
+        // Crear una instancia de Reloj e imprimir el informe
+        Reloj reloj = new Reloj();
+        reloj.imprimirInforme(personas);
+    }
+}
+
+    
+}
