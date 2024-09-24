@@ -17,7 +17,7 @@ public class App {
                 if (respuesta != JOptionPane.OK_CANCEL_OPTION) { // esta wea es para que lo mande si le diste a no
                     JOptionPane.showMessageDialog(null, "F, dale una hojeada si puedes jsjs, esta bueno, al principio parece mrd pq es tower defense");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Que malparido te vas nomas jsjs, ojala tu peso se devalue");
+                    JOptionPane.showMessageDialog(null, "Que malparido te vas nomas jsjs, ojala tu moneda se devalue");
                 }
             }
 

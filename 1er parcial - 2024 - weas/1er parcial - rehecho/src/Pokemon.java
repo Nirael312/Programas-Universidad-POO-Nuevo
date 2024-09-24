@@ -14,7 +14,7 @@ public abstract class Pokemon {
         this.salvajismo = genero_stats();
     }
 
-    public int genero_stats() {
+    private int genero_stats() {
         Random random = new Random();
 
         int val = random.nextInt(1,101);

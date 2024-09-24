@@ -13,6 +13,7 @@ public class Tipo_fuego extends Pokemon {
 
         Random random = new Random();
 
+            
         int daño_inflijido = super.atacar(pokemon_atacado);
         if (pokemon_atacado.debilidad == "Fuego") {
 
