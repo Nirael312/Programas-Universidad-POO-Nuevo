@@ -33,7 +33,7 @@ public class Entrenador {
             
             pokemon_principal.ataque(pokemon_salvaje);
             pokemon_salvaje.ataque(pokemon_principal);
-            salvajismo_actual -= salvajismo_actual*0.10;
+            salvajismo_actual = (int) (-salvajismo_actual*0.10);
 
             i++;
         }
@@ -54,6 +54,7 @@ public class Entrenador {
         }
     }
 
+
     public void muestro_entrenador() {
         
         System.out.println("Nombre: " + nombre + ", nivel de entrenador: " + nivel_entrenador);
@@ -63,6 +64,5 @@ public class Entrenador {
             pokemon_aux.muestro_pokemon();
         }
     }
-
 
 }
