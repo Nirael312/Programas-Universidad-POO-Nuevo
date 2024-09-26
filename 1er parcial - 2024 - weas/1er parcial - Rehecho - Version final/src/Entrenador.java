@@ -24,24 +24,23 @@ public class Entrenador {
     }
 
     public void atrapar_pokemon(Pokemon pokemon_salvaje) {
-        int vida_actual = pokemon_principal.getVida();
-        int vida_actual_salvaje = pokemon_salvaje.getVida();
+
         int salvajismo_actual = pokemon_salvaje.getSalvajismo();
         int i = 0;
 
-        while (i < 3 && salvajismo_actual > nivel_entrenador && vida_actual > 0 && vida_actual_salvaje > 0) {
+        while (i < 3 && salvajismo_actual > nivel_entrenador && pokemon_principal.getVida() > 0 && pokemon_salvaje.getVida() > 0) {
             
             pokemon_principal.ataque(pokemon_salvaje);
             pokemon_salvaje.ataque(pokemon_principal);
-            salvajismo_actual = (int) (-salvajismo_actual*0.10);
+            salvajismo_actual -= salvajismo_actual*0.10;
 
             i++;
         }
 
-        if (vida_actual_salvaje == 0) {
+        if (pokemon_salvaje.getVida() == 0) {
             System.out.println("El pokemon salvaje fue derribado, no se pudo capturar...");
         } else {
-            if (vida_actual == 0) {
+            if (pokemon_principal.getVida() == 0) {
                 System.out.println("Tu pokemon fue derrotado, el pokemon salvaje escapo...");
             } else {
                 if (salvajismo_actual < nivel_entrenador) {
@@ -52,10 +51,19 @@ public class Entrenador {
                 }
             }
         }
+
+        pokemon_principal.setVida(100);
+        System.out.println(pokemon_salvaje.getSalvajismo());
+        System.out.println(salvajismo_actual);
+        System.out.println("Turnos: " + i);
+        pokemon_salvaje.setSalvajismo(salvajismo_actual);
+
     }
 
 
     public void muestro_entrenador() {
+
+        System.out.println("---------------------------------------");
         
         System.out.println("Nombre: " + nombre + ", nivel de entrenador: " + nivel_entrenador);
         System.out.println("Los pokemones que posee el entrenador son: ");

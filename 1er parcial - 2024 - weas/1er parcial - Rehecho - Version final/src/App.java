@@ -8,6 +8,12 @@ public class App {
         ArrayList<Pokemon> Pokemones = new ArrayList<>();
         Random random = new Random();
 
+        Cosa cosa = new Cosa(10);
+
+        if (cosa.getCosa() == 10) {
+            System.out.println("cosa");
+        }
+
         Tipo_fuego charmander = new Tipo_fuego("Charmander");
 
         Entrenador entrenador = new Entrenador("Ariel Zerna Rodriguez", charmander);

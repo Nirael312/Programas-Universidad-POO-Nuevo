@@ -41,7 +41,12 @@ public abstract class Pokemon {
 
     public void ataque(Pokemon pokemon_atacado) {
 
-        int daño_inflijido = ataque - pokemon_atacado.getDefensa();
+        int daño_inflijido = 0;
+
+        if (ataque > pokemon_atacado.getDefensa()) {
+            daño_inflijido = ataque - pokemon_atacado.getDefensa();
+        }
+        
         Random random = new Random();
 
         if (tipo == pokemon_atacado.getDebilidad()) {
@@ -70,6 +75,14 @@ public abstract class Pokemon {
 
     public int getSalvajismo() {
         return salvajismo;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public void setSalvajismo(int salvajismo) {
+        this.salvajismo = salvajismo;
     }
 
 }

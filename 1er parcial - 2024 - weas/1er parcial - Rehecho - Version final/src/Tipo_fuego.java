@@ -11,11 +11,14 @@ public class Tipo_fuego extends Pokemon {
     @Override
     public void ataque(Pokemon pokemon_atacado) {
 
-        int daño_inflijido = ataque - pokemon_atacado.getDefensa();
-        Random random = new Random();
+        int daño_inflijido = 0;
+
+        if (ataque > pokemon_atacado.getDefensa()) {
+            daño_inflijido = ataque - pokemon_atacado.getDefensa();
+        }
 
         if (tipo == pokemon_atacado.getDebilidad()) {
-            daño_inflijido = (int) (+ daño_inflijido*0.7);
+            daño_inflijido += daño_inflijido*0.7;
         }
 
         this.defensa(daño_inflijido);
@@ -26,7 +29,7 @@ public class Tipo_fuego extends Pokemon {
         Random random = new Random();
 
         if (random.nextDouble() <= 0.30) {
-            daño_recibido = (int) (-daño_recibido*0.5);
+            daño_recibido -= daño_recibido*0.5;
         }
 
         this.recibir_daño(daño_recibido);
