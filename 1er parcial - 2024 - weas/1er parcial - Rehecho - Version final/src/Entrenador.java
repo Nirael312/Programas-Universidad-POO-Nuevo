@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Entrenador {
     private String nombre;
     private int nivel_entrenador;
     private Pokemon pokemon_principal;
-    private List<Pokemon> pokedex;
+    private ArrayList<Pokemon> pokedex;
 
     public Entrenador(String nombre, Pokemon pokemon_principal) {
 
@@ -37,6 +36,7 @@ public class Entrenador {
             i++;
         }
 
+        System.out.println("-------");
         if (pokemon_salvaje.getVida() == 0) {
             System.out.println("El pokemon salvaje fue derribado, no se pudo capturar...");
         } else {
@@ -51,6 +51,8 @@ public class Entrenador {
                 }
             }
         }
+
+        System.out.println("-------");
 
         pokemon_principal.setVida(100);
         System.out.println(pokemon_salvaje.getSalvajismo());

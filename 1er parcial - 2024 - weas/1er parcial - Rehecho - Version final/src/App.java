@@ -19,7 +19,7 @@ public class App {
         Entrenador entrenador = new Entrenador("Ariel Zerna Rodriguez", charmander);
         entrenador.agregar_pokemon(charmander);
 
-        for (int i = 1; i < 11; i++) {
+        for (int i = 0; i < 10; i++) {
 
             int tipo_aleatorio = random.nextInt(1,4);
 
