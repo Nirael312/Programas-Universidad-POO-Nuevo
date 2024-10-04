@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 public class App {
+    
     public static void main(String[] args) throws Exception {
         
         List<String> habilidades = List.of("Ataque", "Pase", "Defensa");

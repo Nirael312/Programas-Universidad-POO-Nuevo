@@ -6,13 +6,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "App",
-            "request": "launch",
-            "mainClass": "App",
-            "projectName": "1er parcial - Rehecho - Version final_ca5bcf97"
-        },
-        {
-            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -21,8 +14,8 @@
             "type": "java",
             "name": "App",
             "request": "launch",
-            "mainClass": "${workspace}/src/App.java",
-            "projectName": "1er parcial - Rehecho - Version final_ca5bcf97"
+            "mainClass": "App",
+            "projectName": "Programas-Universidad-POO-Nuevo_32d7a3b3"
         }
     ]
 }
