@@ -18,7 +18,7 @@ public class App {
         Random random = new Random();
         int val_random = 0;
 
-        for (int i = 0; i < 22; i++) {
+        for (int i = 1; i < 23; i++) {
 
             val_random = random.nextInt(1,4);
             
