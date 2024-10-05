@@ -1,0 +1,29 @@
+// Definición de la excepción personalizada
+class EdadInvalidaException extends Exception {
+    public EdadInvalidaException(String mensaje) {
+        super(mensaje);  // Pasamos el mensaje a la clase base Exception
+    }
+}
+
+public class EjemploExcepcionPersonalizada {
+    // Método que lanza la excepción si la edad es menor de 18
+    public static void verificarEdad(int edad) throws EdadInvalidaException {
+        if (edad < 18) {
+            throw new EdadInvalidaException("La edad ingresada es menor de 18.");
+        } else {
+            System.out.println("Edad válida: " + edad);
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            // Prueba con una edad menor de 18 para lanzar la excepción
+            verificarEdad(15);
+        } catch (EdadInvalidaException e) {
+            // Capturamos y manejamos la excepción personalizada
+            System.out.println("Excepción atrapada: " + e.getMessage());
+        }
+        
+        System.out.println("Programa terminado.");
+    }
+}
